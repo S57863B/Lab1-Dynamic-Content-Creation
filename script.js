@@ -21,8 +21,17 @@ function removeItem(event) {
 }
 
 function addProduct() {
-    const name = productNameInput.ariaValueMax;
+    const name = productNameInput.value.trim();
     const price = parseFloat(productPriceInput.value);
+    
+    if(!name){
+        alert('Please enter a product name.');
+        return;
+    }
+    if(isNaN(price) || price <= 0){
+        alert('Please enter a valid price.');
+        return;
+    }
 
     const li = document.createElement('li');
     li.className = 'cart-item';
